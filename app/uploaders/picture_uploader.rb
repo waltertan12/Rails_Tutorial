@@ -1,10 +1,10 @@
 # encoding: utf-8
 
 class PictureUploader < CarrierWave::Uploader::Base
-  include Carrierwave::MiniMagick
-  process resize_to_limit [400,400]
+  include CarrierWave::MiniMagick
+  process resize_to_limit: [400,400]
   
-  if Rails.env.production
+  if Rails.env.production?
     storage :fog
   else
     storage :file
